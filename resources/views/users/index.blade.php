@@ -12,10 +12,15 @@
                 </div>
             @endif
 
+            @if (session()->has('errmessage'))
+                <div class="alert alert-danger">
+                  {{ session('errmessage') }}
+                </div>
+            @endif
 
-            <form method="GET" action="{{ route('users.index') }}" class="row gy-2 gx-3 align-items-center">
+            <form method="GET" action="{{ route('users.index') }}" class="mx-auto mt-3 row gy-2 gx-3 align-items-center">
               <div class="col-auto">
-                <input type="search" name="search" class="form-control" id="autoSizingInput" placeholder="Jane Doe">
+                <input type="search" name="search" class="form-control" id="autoSizingInput" placeholder="Search for something...">
               </div>
           
               <div class="col-auto">
