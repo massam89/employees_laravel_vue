@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CountryStoreRequest;
 use Illuminate\Http\Request;
+use App\Models\Country;
 
 class CountryController extends Controller
 {
@@ -12,9 +14,15 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $countries = Country::all();
+
+        if($request->has('search')) {
+            $countries = Country::where('name', 'like', "%{$request->search}%")->orWhere('country_code','like', "%{$request->search}%")->get();
+        }
+        
+       return view('countries.index', compact('countries'));
     }
 
     /**
@@ -24,7 +32,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.create');
     }
 
     /**
@@ -33,9 +41,11 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryStoreRequest $request)
     {
-        //
+        Country::create($request->validated());
+
+        return redirect()->route('countries.index')->with('message', 'Country created successfully!');
     }
 
     /**
