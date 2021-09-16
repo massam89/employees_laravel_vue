@@ -10,7 +10,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ __('Create country') }}</div>
+                        <div class="card-header">
+                            {{ __('Create country') }}
+                            <a href="{{ route('countries.index') }}" class="float-right btn">Back</a>
+                        </div>
         
                         <div class="card-body">
                             <form method="POST" action="{{ route('countries.store') }}">
@@ -34,7 +37,7 @@
                                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
         
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('first_name') }}" required autocomplete="name" autofocus>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
         
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
