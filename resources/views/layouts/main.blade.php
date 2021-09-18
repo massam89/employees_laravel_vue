@@ -58,9 +58,9 @@
                     <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
-                            <a class="collapse-item" href="#">State</a>
+                            <a class="collapse-item" href="{{ route('states.index') }}">State</a>
                             <a class="collapse-item" href="{{ route('departments.index') }}">Department</a>
-                            <a class="collapse-item" href="#l">City</a>
+                            <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
                         </div>
                     </div>
                 </li>
@@ -145,7 +145,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
+                            <span>Copyright &copy; Employees Manager <script>document.write(new Date().getFullYear())</script></span>
                         </div>
                     </div>
                 </footer>
